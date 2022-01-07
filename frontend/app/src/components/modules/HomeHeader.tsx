@@ -19,7 +19,7 @@ function HomeHeader(props: Props) {
             Home Apps
           </h1>
         </div>
-        <div className='w-2/5 pb-5 mx-auto md:w-2/6 lg:w-2/6 xl:1/2'>
+        <div className='w-2/5 pb-20 mx-auto md:w-2/6 lg:w-2/6 xl:1/2'>
           <Image
             className='rounded-full'
             src='/sample.jpg'

@@ -5,7 +5,7 @@ interface Props {
   menuName: string
 }
 
-function MenuButton(props: Props) {
+function CalcMenuButton(props: Props) {
   const { menuName } = props
   const router = useRouter()
 
@@ -13,11 +13,11 @@ function MenuButton(props: Props) {
     <button
       type='button'
       className={`w-full py-10 text-xl group-hover:underline md:text-3xl md:py-20`}
-      onClick={() => router.push(`/${menuName.toLowerCase()}`)}
+      onClick={() => router.push(`/homecalc/${menuName.toLowerCase()}`)}
     >
       {menuName}
     </button>
   )
 }
 
-export default MenuButton
+export default CalcMenuButton

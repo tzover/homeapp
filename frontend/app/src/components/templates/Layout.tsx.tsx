@@ -16,7 +16,7 @@ function Layout(props: Props) {
     <>
       <div className='min-h-screen'>
         <Header title={title} appName={appName} />
-        {children}
+        <div className='p-8'>{children}</div>
       </div>
       <Footer copyright={copyright} />
     </>
