@@ -13,7 +13,7 @@ function CalcInputMenuButton(props: Props) {
   return (
     <button
       type='button'
-      className={`w-full py-12 text-lg break-all group-hover:underline`}
+      className={`w-full py-12 text-lg break-all group-hover:underline md:text-2xl md:py-16 lg:text-3xl lg:py-24`}
       onClick={() => router.push(`/homecalc/input/${path.toLowerCase()}`)}
     >
       {menuName}

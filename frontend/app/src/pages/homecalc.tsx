@@ -1,6 +1,7 @@
 import Layout from '../components/templates/Layout.tsx'
 import SubTitle from '../components/atoms/SubTitle'
 import CalcMenuButton from '../components/atoms/CalcMenuButton'
+import ButtonActionContainer from '../components/templates/ButtonActionContainer'
 import PageBackButton from '../components/atoms/PageBackButton'
 
 function HomeCalc() {
@@ -20,7 +21,9 @@ function HomeCalc() {
           )
         })}
       </div>
-      <PageBackButton pagePath='/' />
+      <ButtonActionContainer isForm={false}>
+        <PageBackButton pagePath='/' />
+      </ButtonActionContainer>
     </Layout>
   )
 }

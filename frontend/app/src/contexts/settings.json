@@ -1,0 +1,8 @@
+[
+  {
+    "id": 0,
+    "type": "fixed-cost",
+    "price": 1000,
+    "etc": "test"
+  }
+]

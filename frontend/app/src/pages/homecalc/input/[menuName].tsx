@@ -1,29 +1,124 @@
 import Layout from '../../../components/templates/Layout.tsx'
 import SubTitle from '../../../components/atoms/SubTitle'
+import ButtonActionContainer from '../../../components/templates/ButtonActionContainer'
+import useInputCalcData from '../../../hooks/useInputCalcData'
 import PageBackButton from '../../../components/atoms/PageBackButton'
-import useToday from '../../../hooks/useToday'
-import CalcInput from '../../../components/atoms/CalcInput'
+import CalcSendButton from '../../../components/atoms/CalcSendButton'
+import { inputCalcSelectOption } from '../../../contexts/AppBasicContext'
+import { useCallback } from 'react'
 
-function InputCalc() {
-  const { today } = useToday()
+interface Props {
+  msg: string
+}
+
+function InputCalc(props: Props) {
+  const { msg = 'income' } = props
+  const {
+    today,
+    datetime,
+    type,
+    price,
+    etcTxt,
+    changeDatetime,
+    changeType,
+    changePrice,
+    changeEtc,
+  } = useInputCalcData()
+
+  const { income, saving, fixedCost, variableCost, yuz, etc } =
+    inputCalcSelectOption
+
+  const inputStyle = 'w-full bg-blue-100 p-5 text-xl md:text-2xl lg:text-3xl'
+
+  const renderOptions = useCallback(() => {
+    switch (msg) {
+      case 'income':
+        const incomeOptions = income.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))
+        return incomeOptions
+      case 'saving':
+        const savingOptions = saving.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))
+        return savingOptions
+      case 'fixed-cost':
+        const fcOptions = fixedCost.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))
+        return fcOptions
+      case 'variable-cost':
+        const vcOptions = variableCost.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))
+        return vcOptions
+      case 'yuz':
+        const yuzOptions = yuz.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))
+        return yuzOptions
+      case 'etc':
+        const etcOptions = etc.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))
+        return etcOptions
+      default:
+        break
+    }
+  }, [msg])
+
   return (
     <Layout title={'Home Calc | Input'} appName={'Home Calc App'}>
       <SubTitle title='Input Calc' />
       <div className='flex flex-col p-3 my-14'>
-        <CalcInput type='date' defaultValue={today} />
-        {/* variable */}
-        <select className='w-full bg-blue-100 p-5 form-select appearance-none'>
+        <input
+          type='date'
+          defaultValue={today}
+          onChange={(e) => changeDatetime(e.target.value)}
+          className={inputStyle}
+        />
+        <select
+          onChange={(e) => changeType(e.target.value)}
+          className='w-full bg-blue-100 p-5 form-select appearance-none'
+        >
           <option>Select calc type</option>
-          <option>aaaa</option>
-          <option>bbbb</option>
-          <option>cccc</option>
+          {renderOptions()}
         </select>
-        <CalcInput type='number' placeholder='Price' />
-        <CalcInput type='text' placeholder='etc.' />
+        <input
+          type='number'
+          placeholder='Price'
+          onChange={(e) => changePrice(Number(e.target.value))}
+          className={inputStyle}
+        />
+        <input
+          type='text'
+          placeholder='etc.'
+          onChange={(e) => changeEtc(e.target.value)}
+          className={inputStyle}
+        />
       </div>
 
-      {/* back */}
-      <PageBackButton pagePath='/homecalc/input' />
+      <ButtonActionContainer isForm={true}>
+        <PageBackButton pagePath='/homecalc/input' />
+        <CalcSendButton
+          datetime={datetime}
+          selectType={type}
+          price={price}
+          etc={etcTxt}
+        />
+      </ButtonActionContainer>
     </Layout>
   )
 }

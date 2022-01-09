@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 function useToday() {
   const [today, setToday] = useState('')
@@ -8,11 +8,11 @@ function useToday() {
   const month = date.getMonth() + 1
   const day = date.getDate()
 
-  const formatToday = (num: string, digit: number) => {
+  const formatToday = useCallback((num: string, digit: number) => {
     num += ''
     if (num.length < digit) num = '0' + num
     return num
-  }
+  }, [])
 
   useEffect(() => {
     const yyyy = formatToday(String(year), 4)
