@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import Layout from '../../../components/templates/Layout.tsx'
 import SubTitle from '../../../components/atoms/SubTitle'
 import ButtonActionContainer from '../../../components/templates/ButtonActionContainer'

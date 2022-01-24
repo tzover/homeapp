@@ -19,8 +19,10 @@ function Settings(props: Props) {
     <Layout title={'Home Calc | Settings'} appName={'Home Calc App'}>
       <SubTitle title='Settings' />
       <div className='my-14'>
-        <div>Month Area</div>
-        <div>Settings</div>
+        <div>固定費</div>
+        <div>家計割合</div>
+        <div>家計項目</div>
+        <div>買いたいものリスト</div>
       </div>
 
       <ButtonActionContainer isForm={false}>

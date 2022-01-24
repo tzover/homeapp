@@ -15,3 +15,11 @@ export const inputCalcSelectOption = {
   yuz: ['yuz'],
   etc: ['etc'],
 }
+
+// settings
+export const settingsCalcMenu = [
+  { path: '', view: '' },
+  { path: '', view: '' },
+  { path: '', view: '' },
+  { path: '', view: '' },
+]

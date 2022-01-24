@@ -4,5 +4,11 @@
     "type": "fixed-cost",
     "price": 1000,
     "etc": "test"
+  },
+  {
+    "id": 1,
+    "type": "fixed-cost",
+    "price": 2000,
+    "etc": "test"
   }
 ]
